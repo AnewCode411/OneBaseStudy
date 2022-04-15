@@ -49,7 +49,7 @@ namespace ET
 
         public void Vital(string message)
         {
-            this.logger.Error(message);
+            this.logger.Info(message);
         }
 
         public void Trace(string message, params object[] args)
@@ -89,7 +89,7 @@ namespace ET
 
          public void Vital(string message, params object[] args)
         {
-            this.logger.Error(message, args);
+            this.logger.Info(message, args);
         }
     }
 }

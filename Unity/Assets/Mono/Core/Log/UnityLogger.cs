@@ -48,7 +48,7 @@ namespace ET
 
         public void Vital(string message)
         {
-            UnityEngine.Debug.LogError(GetCurTime() + message);
+            UnityEngine.Debug.Log(GetCurTime() + message);
         }
 
         public void Trace(string message, params object[] args)
@@ -88,7 +88,7 @@ namespace ET
 
          public void Vital(string message, params object[] args)
         {
-            UnityEngine.Debug.LogErrorFormat(GetCurTime() + message, args);
+            UnityEngine.Debug.LogFormat(GetCurTime() + message, args);
         }
 
         public static string GetCurTime(bool all = false)

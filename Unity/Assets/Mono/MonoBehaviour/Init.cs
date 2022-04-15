@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Collections;
+using System.Threading;
 using UnityEngine;
 
 namespace ET
@@ -11,7 +12,7 @@ namespace ET
 		Reload = 3,
 	}
 	
-	public class Init: MonoBehaviour
+	public class Init : MonoBehaviour
 	{
 		public CodeMode CodeMode = CodeMode.Mono;
 		
@@ -45,7 +46,18 @@ namespace ET
 
 		private void Start()
 		{
+			
 			CodeLoader.Instance.Start();
+
+			StartCoroutine(StartInit());
+		}
+
+		private IEnumerator StartInit()
+		{
+			RuntimeConfig runtimeConfig = gameObject.transform.GetComponent<RuntimeConfig>();
+			Log.Vital($"Game init: {runtimeConfig.apkType}");
+
+			yield return null;
 		}
 
 		private void Update()

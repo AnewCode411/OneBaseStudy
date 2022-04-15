@@ -232,7 +232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 335098432}
   m_Layer: 0
-  m_Name: Gamemanager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -250,6 +250,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 968978257}
+  - {fileID: 1532776083}
   m_Father: {fileID: 575235020}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -428,6 +429,7 @@ GameObject:
   m_Component:
   - component: {fileID: 575235020}
   - component: {fileID: 575235022}
+  - component: {fileID: 575235021}
   - component: {fileID: 575235019}
   m_Layer: 0
   m_Name: Global
@@ -448,7 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff906ecbbd0163f4094f8fa4e305d39f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CodeMode: 2
+  CodeMode: 1
 --- !u!4 &575235020
 Transform:
   m_ObjectHideFlags: 0
@@ -468,6 +470,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &575235021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575235018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa8ded8620cde14ebe2f996b981e0c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  apkType: 1000
+  isDllCode: 1
+  isABRes: 1
+  isABCfg: 1
+  runScene: 0
+  noConsole: 0
+  fullPackage: 1
+  langue: zh
 --- !u!114 &575235022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -622,7 +644,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 968978257}
-  - component: {fileID: 968978259}
   m_Layer: 0
   m_Name: Config
   m_TagString: Untagged
@@ -644,25 +665,6 @@ Transform:
   m_Father: {fileID: 335098432}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &968978259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 968978256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fa8ded8620cde14ebe2f996b981e0c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  apkType: 1000
-  isDllCode: 1
-  isABRes: 1
-  isABCfg: 1
-  noConsole: 0
-  bigPackage: 0
-  langue: zh
 --- !u!1 &1245951401
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,6 +890,36 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 20
   m_TargetDisplay: 0
+--- !u!1 &1532776082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1532776083}
+  m_Layer: 0
+  m_Name: Log
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1532776083
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532776082}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 335098432}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1784017107
 GameObject:
   m_ObjectHideFlags: 0
