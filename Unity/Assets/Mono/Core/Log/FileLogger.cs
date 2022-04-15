@@ -42,6 +42,24 @@ namespace ET
             this.stream.Flush();
         }
 
+        public void Fatal(string message)
+        {
+            this.stream.WriteLine(message);
+            this.stream.Flush();
+        }
+
+        public void Proto(string message)
+        {
+            this.stream.WriteLine(message);
+            this.stream.Flush();
+        }
+
+        public void Vital(string message)
+        {
+            this.stream.WriteLine(message);
+            this.stream.Flush();
+        }
+
         public void Trace(string message, params object[] args)
         {
             this.stream.WriteLine(message, args);
@@ -77,5 +95,18 @@ namespace ET
             this.stream.WriteLine(message, args);
             this.stream.Flush();
         }
+
+        public void Proto(string message, params object[] args)
+        {
+            this.stream.WriteLine(message, args);
+            this.stream.Flush();
+        }
+
+        public void Vital(string message, params object[] args)
+        {
+            this.stream.WriteLine(message, args);
+            this.stream.Flush();
+        }
+
     }
 }

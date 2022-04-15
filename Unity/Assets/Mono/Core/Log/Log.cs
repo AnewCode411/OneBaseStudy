@@ -14,9 +14,13 @@ namespace ET
         public static ILog ILog { get; set; }
         
         private const int TraceLevel = 1;
-        private const int DebugLevel = 2;
-        private const int InfoLevel = 3;
-        private const int WarningLevel = 4;
+        private const int DebugLevel = 2;       //  调试
+        private const int InfoLevel = 3;        //  一般信息
+        private const int ProtoLevel = 4;       //  协议
+        private const int WarningLevel = 5;     //  警告
+        private const int ErrorLevel = 6;       //  错误
+        private const int VitalLevel = 7;       //  重要流程
+        private const int FatalLevel = 8;       //  致命错误
 
         private static bool CheckLogLevel(int level)
         {
@@ -25,12 +29,12 @@ namespace ET
         
         public static void Trace(string msg)
         {
-            if (!CheckLogLevel(DebugLevel))
+            if (!CheckLogLevel(TraceLevel))
             {
                 return;
             }
             StackTrace st = new StackTrace(1, true);
-            ILog.Trace($"{msg}\n{st}");
+            ILog.Trace($"[TRACE]  {msg}\n{st}");
         }
 
         public static void Debug(string msg)
@@ -39,7 +43,7 @@ namespace ET
             {
                 return;
             }
-            ILog.Debug(msg);
+            ILog.Debug($"[DEBUG]  {msg}");
         }
 
         public static void Info(string msg)
@@ -48,7 +52,7 @@ namespace ET
             {
                 return;
             }
-            ILog.Info(msg);
+            ILog.Info($"[INFO]  {msg}");
         }
 
         public static void TraceInfo(string msg)
@@ -58,7 +62,7 @@ namespace ET
                 return;
             }
             StackTrace st = new StackTrace(1, true);
-            ILog.Trace($"{msg}\n{st}");
+            ILog.Trace($"[TRACE INFO]  {msg}\n{st}");
         }
 
         public static void Warning(string msg)
@@ -68,24 +72,60 @@ namespace ET
                 return;
             }
 
-            ILog.Warning(msg);
+            ILog.Warning($"[WARNING]  {msg}");
+        }
+
+        public static void Proto(string msg)
+        {
+            if (!CheckLogLevel(ProtoLevel))
+            {
+                return;
+            }
+            ILog.Proto(string.Format($"[PROTO]  {msg}"));
+        }
+
+        public static void Vital(string msg)
+        {
+            if (!CheckLogLevel(VitalLevel))
+            {
+                return;
+            }
+            ILog.Vital(string.Format($"[VITAL]  {msg}"));
         }
 
         public static void Error(string msg)
         {
+            if (!CheckLogLevel(ErrorLevel))
+            {
+                return;
+            }
             StackTrace st = new StackTrace(1, true);
-            ILog.Error($"{msg}\n{st}");
+            ILog.Error($"[ERROR]  {msg}\n{st}");
+        }
+
+        public static void Fatal(string msg)
+        {
+            if (!CheckLogLevel(FatalLevel))
+            {
+                return;
+            }
+            StackTrace st = new StackTrace(1, true);
+            ILog.Fatal($"[FATAL]  {msg}\n{st}");
         }
 
         public static void Error(Exception e)
         {
+            if (!CheckLogLevel(ErrorLevel))
+            {
+                return;
+            }
             if (e.Data.Contains("StackTrace"))
             {
-                ILog.Error($"{e.Data["StackTrace"]}\n{e}");
+                ILog.Error($"[ERROR EXCEPTION]  {e.Data["StackTrace"]}\n{e}");
                 return;
             }
             string str = e.ToString();
-            ILog.Error(str);
+            ILog.Error($"[ERROR]  {str}");
         }
 
         public static void Trace(string message, params object[] args)
@@ -95,7 +135,7 @@ namespace ET
                 return;
             }
             StackTrace st = new StackTrace(1, true);
-            ILog.Trace($"{string.Format(message, args)}\n{st}");
+            ILog.Trace($"[TRACE]  {string.Format(message, args)}\n{st}");
         }
 
         public static void Warning(string message, params object[] args)
@@ -104,7 +144,7 @@ namespace ET
             {
                 return;
             }
-            ILog.Warning(string.Format(message, args));
+            ILog.Warning($"[WARNING]  {string.Format(message, args)}");
         }
 
         public static void Info(string message, params object[] args)
@@ -113,7 +153,7 @@ namespace ET
             {
                 return;
             }
-            ILog.Info(string.Format(message, args));
+            ILog.Info($"[INFO]  {string.Format(message, args)}");
         }
 
         public static void Debug(string message, params object[] args)
@@ -122,15 +162,19 @@ namespace ET
             {
                 return;
             }
-            ILog.Debug(string.Format(message, args));
+            ILog.Debug($"[DEBUG]  {string.Format(message, args)}");
 
         }
 
         public static void Error(string message, params object[] args)
         {
+            if (!CheckLogLevel(ErrorLevel))
+            {
+                return;
+            }
             StackTrace st = new StackTrace(1, true);
             string s = string.Format(message, args) + '\n' + st;
-            ILog.Error(s);
+            ILog.Error($"[ERROR]  {s}");
         }
         
         public static void Console(string message)
@@ -139,7 +183,7 @@ namespace ET
             {
                 System.Console.WriteLine(message);
             }
-            ILog.Debug(message);
+            ILog.Debug($"[CONSOLE DEBUG]  {message}");
         }
         
         public static void Console(string message, params object[] args)
@@ -149,7 +193,7 @@ namespace ET
             {
                 System.Console.WriteLine(s);
             }
-            ILog.Debug(s);
+            ILog.Debug($"[CONSOLE DEBUG]  {s}");
         }
     }
 }

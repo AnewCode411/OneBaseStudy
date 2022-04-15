@@ -42,6 +42,16 @@ namespace ET
             this.logger.Fatal(message);
         }
 
+        public void Proto(string message)
+        {
+            this.logger.Info(message);
+        }
+
+        public void Vital(string message)
+        {
+            this.logger.Error(message);
+        }
+
         public void Trace(string message, params object[] args)
         {
             this.logger.Trace(message, args);
@@ -70,6 +80,16 @@ namespace ET
         public void Fatal(string message, params object[] args)
         {
             this.logger.Fatal(message, args);
+        }
+
+         public void Proto(string message, params object[] args)
+        {
+            this.logger.Info(message, args);
+        }
+
+         public void Vital(string message, params object[] args)
+        {
+            this.logger.Error(message, args);
         }
     }
 }
