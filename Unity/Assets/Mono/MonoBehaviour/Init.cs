@@ -67,6 +67,8 @@ namespace ET
 			CodeLoader.Instance.CodeMode = this.CodeMode;
 			Options.Instance.Develop = (int)this.DevelopMode;	//设置 模式
 			Options.Instance.LogLevel = (int)this.LogLevelMode;	//设置日志等级
+
+			Log.Vital($"init CodeMode:  {this.CodeMode.ToString()}; \tDevelopMode:  {this.DevelopMode.ToString()}; \tLogLevelMode:  {this.LogLevelMode.ToString()}");
 		}
 
 		private void Start()

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace ET
 {
-    public sealed partial class RuntimeDebuger : MonoSingleton<RuntimeDebuger>
+    public sealed partial class RuntimeDebugger : MonoSingleton<RuntimeDebugger>
     {
         [Serializable]
         private sealed class ConsoleWindow : IDebuggerWindow

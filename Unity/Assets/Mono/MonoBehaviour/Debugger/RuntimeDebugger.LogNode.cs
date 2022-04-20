@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ET
 {
-    public sealed partial class RuntimeDebuger : MonoSingleton<RuntimeDebuger>
+    public sealed partial class RuntimeDebugger : MonoSingleton<RuntimeDebugger>
     {
         /// <summary>
         /// 日志记录结点。

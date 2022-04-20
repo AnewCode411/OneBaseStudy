@@ -19,7 +19,7 @@ namespace ET
             runtimeLog = RuntimeLog.Instance;
 
             if (runtimeConfig.hasDebugger) {
-                RuntimeDebuger xx = RuntimeDebuger.Instance;
+                RuntimeDebugger xx = RuntimeDebugger.Instance;
             }
 
             Log.Vital($"RuntimeManager init: {runtimeConfig.apkType}");

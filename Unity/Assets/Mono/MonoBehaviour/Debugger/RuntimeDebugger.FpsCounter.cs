@@ -1,7 +1,7 @@
 ﻿
 namespace ET
 {
-    public sealed partial class RuntimeDebuger : MonoSingleton<RuntimeDebuger>
+    public sealed partial class RuntimeDebugger : MonoSingleton<RuntimeDebugger>
     {
         private sealed class FpsCounter
         {
