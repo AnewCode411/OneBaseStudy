@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Threading;
 using UnityEngine;
+using Sirenix;
 
 namespace ET
 {
@@ -11,10 +12,34 @@ namespace ET
 		ILRuntime = 2,
 		Reload = 3,
 	}
+
+	// "develop mode, 0正式 1开发 2压测"
+	public enum DevelopMode
+	{
+		Release = 0,
+		Dev = 1,
+		PressureTest = 2,
+	}
+
+	//	log level
+	public enum LogLevelMode
+	{
+		All = 0,
+		TraceLevel = 1,
+        DebugLevel = 2,       //  调试
+        InfoLevel = 3,        //  一般信息
+        ProtoLevel = 4,       //  协议
+        WarningLevel = 5,     //  警告
+        ErrorLevel = 6,       //  错误
+        VitalLevel = 7,       //  重要流程
+        FatalLevel = 8,       //  致命错误
+	}
 	
 	public class Init : MonoBehaviour
 	{
 		public CodeMode CodeMode = CodeMode.Mono;
+		public DevelopMode DevelopMode = DevelopMode.Dev;
+		public LogLevelMode LogLevelMode = LogLevelMode.All;
 		
 		private void Awake()
 		{
@@ -40,8 +65,8 @@ namespace ET
 			Options.Instance = new Options();
 
 			CodeLoader.Instance.CodeMode = this.CodeMode;
-			Options.Instance.Develop = 1;
-			Options.Instance.LogLevel = 0;
+			Options.Instance.Develop = (int)this.DevelopMode;	//设置 模式
+			Options.Instance.LogLevel = (int)this.LogLevelMode;	//设置日志等级
 		}
 
 		private void Start()
@@ -54,8 +79,7 @@ namespace ET
 
 		private IEnumerator StartInit()
 		{
-			RuntimeConfig runtimeConfig = gameObject.transform.GetComponent<RuntimeConfig>();
-			Log.Vital($"Game init: {runtimeConfig.apkType}");
+			RuntimeManager.Instance.StartInit();
 
 			yield return null;
 		}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ET
 {
-    public class RuntimeConfig: MonoBehaviour
+    public class RuntimeConfig : MonoSingleton<RuntimeConfig>
     {
         [Tooltip("包类型, 1000: Debug, 2000: Release, 3000:Online")]
         public int apkType = 1000;
@@ -19,8 +19,8 @@ namespace ET
         [Tooltip("配置是否直接在指定场景中直接运行游戏")]
         public bool runScene = false;
 
-        [Tooltip("不显示Console")]
-        public bool noConsole = false;
+        [Tooltip("是否显示debugger")]
+        public bool hasDebugger = false;
 
         [Tooltip("是否分大小包标志, true时表示整包")]
         public bool fullPackage = true;

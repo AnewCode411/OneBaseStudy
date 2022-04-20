@@ -116,5 +116,171 @@ namespace ET
 
 			return false;
 		}
+
+		public static string GetFileName(string filePath)
+        {
+            var tpath = filePath.Replace('\\', '/');
+            var index = tpath.LastIndexOf('/');
+            if (index > 0) return tpath.Substring(index + 1);
+            return filePath;
+        }
+
+		public static string GetFileNameWithoutExtension(string filePath)
+        {
+            return Path.GetFileNameWithoutExtension(filePath);
+        }
+
+		public static string GetDirName(string filePath)
+        {
+            var tpath = filePath.Replace('\\', '/');
+            if (tpath.EndsWith("/")) tpath = tpath.Remove(tpath.Length - 1);
+            var index = tpath.LastIndexOf('/');
+            if (index > 0) return tpath.Substring(index + 1);
+            return filePath;
+        }
+
+		public static void CheckAndCreateDir(string dir)
+        {
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+        }
+
+		public static void DeleteDir(string path)
+        {
+            DirectoryInfo dir = new DirectoryInfo(path);
+            if (dir.Exists)
+            {
+                try
+                {
+                    DirectoryInfo[] childs = dir.GetDirectories();
+                    foreach (DirectoryInfo child in childs)
+                    {
+                        child.Delete(true);
+                    }
+                    dir.Delete(true);
+                }
+                catch (Exception e)
+                {
+                    Log.Error("DeleteDir ERROR:" + e.Message);
+                }
+            }
+        }
+
+		public static void DeleteFile(string path)
+        {
+            if (File.Exists(path))
+            {
+                try
+                {
+                    File.Delete(path);
+                }
+                catch (Exception e)
+                {
+                    Log.Error("DeleteFile ERROR:" + e.Message);
+                }
+            }
+        }
+
+		public static void MoveFile(string sourPath, string destPath)
+        {
+            if (File.Exists(sourPath))
+            {
+                try
+                {
+                    File.Move(sourPath, destPath);
+                }
+                catch (Exception e)
+                {
+                    Log.Error("MoveFile ERROR:" + e.Message);
+                }
+            }
+        }
+
+		public static bool IsExistFile(string path)
+        {
+            return File.Exists(path);
+        }
+
+		public static bool RenameDir(string sourPath, string destPath)
+        {
+            if (System.IO.Directory.Exists(sourPath))
+            {
+                try
+                {
+                    if (Directory.Exists(destPath))
+                    {
+                        Directory.Delete(destPath, true);
+                    }
+                    System.IO.DirectoryInfo folder = new System.IO.DirectoryInfo(sourPath);
+                    folder.MoveTo(destPath);
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Log.Error("RenameDir ERROR:" + e.Message);
+                    return false;
+                }
+            }
+            return false;
+        }
+
+		public static string GetFileText(string path)
+        {
+            if (!File.Exists(path))
+            {
+                return null;
+            }
+            try
+            {
+                return File.ReadAllText(path);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public static string SaveByteToFile(string path, byte[] data, out int fileSize)
+        {
+            try
+            {
+                fileSize = data.Length;
+                File.WriteAllBytes(path, data);
+                return null;
+            }
+            catch (Exception e)
+            {
+                fileSize = 0;
+                return e.Message;
+            }
+        }
+
+        public static string SaveToFile(string path, string text)
+        {
+            try
+            {
+                File.WriteAllText(path, text);
+                return null;
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+        }
+
+        public static string SaveToFile(string path, List<string> txtList)
+        {
+            try
+            {
+                File.WriteAllLines(path, txtList);
+                return null;
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+        }
 	}
 }

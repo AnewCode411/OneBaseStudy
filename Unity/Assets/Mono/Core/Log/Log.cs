@@ -34,7 +34,7 @@ namespace ET
                 return;
             }
             StackTrace st = new StackTrace(1, true);
-            ILog.Trace($"[TRACE]  {msg}\n{st}");
+            ILog.Trace($"[TRACE]\t{msg}\n{st}");
         }
 
         public static void Debug(string msg)
@@ -43,7 +43,7 @@ namespace ET
             {
                 return;
             }
-            ILog.Debug($"[DEBUG]  {msg}");
+            ILog.Debug($"[DEBUG]\t{msg}");
         }
 
         public static void Info(string msg)
@@ -52,7 +52,7 @@ namespace ET
             {
                 return;
             }
-            ILog.Info($"[INFO]  {msg}");
+            ILog.Info($"[INFO]\t{msg}");
         }
 
         public static void TraceInfo(string msg)
@@ -62,7 +62,7 @@ namespace ET
                 return;
             }
             StackTrace st = new StackTrace(1, true);
-            ILog.Trace($"[TRACE INFO]  {msg}\n{st}");
+            ILog.Trace($"[TRACE INFO]\t{msg}\n{st}");
         }
 
         public static void Warning(string msg)
@@ -72,7 +72,7 @@ namespace ET
                 return;
             }
 
-            ILog.Warning($"[WARNING]  {msg}");
+            ILog.Warning($"[WARNING]\t{msg}");
         }
 
         public static void Proto(string msg)
@@ -81,7 +81,7 @@ namespace ET
             {
                 return;
             }
-            ILog.Proto(string.Format($"[PROTO]  {msg}"));
+            ILog.Proto(string.Format($"[PROTO]\t{msg}"));
         }
 
         public static void Vital(string msg)
@@ -90,7 +90,7 @@ namespace ET
             {
                 return;
             }
-            ILog.Vital(string.Format($"[VITAL]  {msg}"));
+            ILog.Vital(string.Format($"[VITAL]\t{msg}"));
         }
 
         public static void Error(string msg)
@@ -100,7 +100,7 @@ namespace ET
                 return;
             }
             StackTrace st = new StackTrace(1, true);
-            ILog.Error($"[ERROR]  {msg}\n{st}");
+            ILog.Error($"[ERROR]\t{msg}\n{st}");
         }
 
         public static void Fatal(string msg)
@@ -110,7 +110,7 @@ namespace ET
                 return;
             }
             StackTrace st = new StackTrace(1, true);
-            ILog.Fatal($"[FATAL]  {msg}\n{st}");
+            ILog.Fatal($"[FATAL]\t{msg}\n{st}");
         }
 
         public static void Error(Exception e)
@@ -121,11 +121,11 @@ namespace ET
             }
             if (e.Data.Contains("StackTrace"))
             {
-                ILog.Error($"[ERROR EXCEPTION]  {e.Data["StackTrace"]}\n{e}");
+                ILog.Error($"[ERROR EXCEPTION]\t{e.Data["StackTrace"]}\n{e}");
                 return;
             }
             string str = e.ToString();
-            ILog.Error($"[ERROR]  {str}");
+            ILog.Error($"[ERROR]\t{str}");
         }
 
         public static void Trace(string message, params object[] args)
@@ -135,7 +135,7 @@ namespace ET
                 return;
             }
             StackTrace st = new StackTrace(1, true);
-            ILog.Trace($"[TRACE]  {string.Format(message, args)}\n{st}");
+            ILog.Trace($"[TRACE]\t{string.Format(message, args)}\n{st}");
         }
 
         public static void Warning(string message, params object[] args)
@@ -144,7 +144,7 @@ namespace ET
             {
                 return;
             }
-            ILog.Warning($"[WARNING]  {string.Format(message, args)}");
+            ILog.Warning($"[WARNING]\t{string.Format(message, args)}");
         }
 
         public static void Info(string message, params object[] args)
@@ -153,7 +153,7 @@ namespace ET
             {
                 return;
             }
-            ILog.Info($"[INFO]  {string.Format(message, args)}");
+            ILog.Info($"[INFO]\t{string.Format(message, args)}");
         }
 
         public static void Debug(string message, params object[] args)
@@ -162,7 +162,7 @@ namespace ET
             {
                 return;
             }
-            ILog.Debug($"[DEBUG]  {string.Format(message, args)}");
+            ILog.Debug($"[DEBUG]\t{string.Format(message, args)}");
 
         }
 
@@ -174,7 +174,7 @@ namespace ET
             }
             StackTrace st = new StackTrace(1, true);
             string s = string.Format(message, args) + '\n' + st;
-            ILog.Error($"[ERROR]  {s}");
+            ILog.Error($"[ERROR]\t{s}");
         }
         
         public static void Console(string message)
@@ -183,7 +183,7 @@ namespace ET
             {
                 System.Console.WriteLine(message);
             }
-            ILog.Debug($"[CONSOLE DEBUG]  {message}");
+            ILog.Debug($"[CONSOLE DEBUG]\t{message}");
         }
         
         public static void Console(string message, params object[] args)
@@ -193,7 +193,7 @@ namespace ET
             {
                 System.Console.WriteLine(s);
             }
-            ILog.Debug($"[CONSOLE DEBUG]  {s}");
+            ILog.Debug($"[CONSOLE DEBUG]\t{s}");
         }
     }
 }
