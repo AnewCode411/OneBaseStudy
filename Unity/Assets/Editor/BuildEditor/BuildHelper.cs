@@ -64,8 +64,9 @@ namespace ET
                     "Assets/Scenes/Init.unity",
                 };
                 UnityEngine.Debug.Log("开始EXE打包");
-                BuildPipeline.BuildPlayer(levels, $"{relativeDirPrefix}/{exeName}", buildTarget, buildOptions);
-                UnityEngine.Debug.Log("完成exe打包");
+                string path = $"{relativeDirPrefix}/{exeName}";
+                BuildPipeline.BuildPlayer(levels, path, buildTarget, buildOptions);
+                UnityEngine.Debug.Log("完成exe打包 路径: " + path);
             }
             else
             {

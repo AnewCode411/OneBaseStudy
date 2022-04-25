@@ -40,6 +40,24 @@ namespace ET
             this.param[2] = c;
             this.methodInfo.Invoke(null, param);
         }
+
+        public override object Get()
+        {
+            return this.methodInfo.Invoke(null, param);
+        }
+
+        public override object Get(object a)
+        {
+            this.param[0] = a;
+            return this.methodInfo.Invoke(null, param);
+        }
+
+        public override object Get(object a, object b)
+        {
+            this.param[0] = a;
+            this.param[1] = b;
+            return this.methodInfo.Invoke(null, param);
+        }
     }
 }
 

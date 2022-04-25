@@ -15,7 +15,7 @@ namespace ET
 		public Action LateUpdate;
 		public Action OnApplicationQuit;
 
-		private Assembly assembly;
+		public Assembly assembly;
 
 		private ILRuntime.Runtime.Enviorment.AppDomain appDomain;
 		

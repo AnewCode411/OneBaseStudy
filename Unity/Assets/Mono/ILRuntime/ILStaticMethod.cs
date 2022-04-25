@@ -41,6 +41,24 @@ namespace ET
             this.param[2] = c;
             this.appDomain.Invoke(this.method, null, param);
         }
+
+        public override object Get()
+        {
+            return this.appDomain.Invoke(this.method, null, param);
+        }
+
+        public override object Get(object a)
+        {
+            this.param[0] = a;
+            return this.appDomain.Invoke(this.method, null, param);
+        }
+
+        public override object Get(object a, object b)
+        {
+            this.param[0] = a;
+            this.param[1] = b;
+            return this.appDomain.Invoke(this.method, null, param);
+        }
     }
 }
 

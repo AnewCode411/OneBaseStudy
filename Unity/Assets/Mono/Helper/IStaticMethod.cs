@@ -6,5 +6,9 @@
         public abstract void Run(object a);
         public abstract void Run(object a, object b);
         public abstract void Run(object a, object b, object c);
+
+        public abstract object Get();
+        public abstract object Get(object a);
+        public abstract object Get(object a, object b);
     }
 }

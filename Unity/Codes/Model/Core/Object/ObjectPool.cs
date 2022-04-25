@@ -45,6 +45,11 @@ namespace ET
             this.pool.Clear();
         }
 
+        public Dictionary<Type, Queue<Entity>> Pool()
+        {
+            return this.pool;
+        }
+
         /// <summary>
         /// 获取对象池数量。
         /// </summary>
