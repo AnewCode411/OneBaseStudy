@@ -54,7 +54,7 @@ namespace ET
             if (assetBundle == null)
             {
                 // 获取资源的时候会抛异常，这个地方不直接抛异常，因为有些地方需要Load之后判断是否Load成功
-                UnityEngine.Debug.LogWarning($"assets bundle not found: {assetBundleName}");
+                Log.Warning($"assets bundle not found: {assetBundleName}");
                 return objects;
             }
 

@@ -5,6 +5,7 @@ using System.Net;
 using ILRuntime.Runtime.Intepreter;
 using ProtoBuf;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace ET
 {
@@ -41,6 +42,8 @@ namespace ET
             list.Add(typeof(ListComponent<ETTask>));
             list.Add(typeof(ListComponent<Vector3>));
             
+            
+            
             // 注册重定向函数
 
             // 注册委托
@@ -53,8 +56,9 @@ namespace ET
             appdomain.DelegateManager.RegisterMethodDelegate<long, MemoryStream>();
             appdomain.DelegateManager.RegisterMethodDelegate<long, IPEndPoint>();
             appdomain.DelegateManager.RegisterMethodDelegate<ILTypeInstance>();
+            appdomain.DelegateManager.RegisterMethodDelegate<Transform,int>();
             appdomain.DelegateManager.RegisterMethodDelegate<AsyncOperation>();
-            
+
             
             appdomain.DelegateManager.RegisterFunctionDelegate<UnityEngine.Events.UnityAction>();
             appdomain.DelegateManager.RegisterFunctionDelegate<System.Object, ET.ETTask>();
@@ -91,6 +95,14 @@ namespace ET
                 });
             });
             
+            appdomain.DelegateManager.RegisterDelegateConvertor<UnityEngine.Events.UnityAction>((act) =>
+            {
+                return new UnityEngine.Events.UnityAction(() =>
+                {
+                    ((Action)act)();
+                });
+            });
+
             // 注册适配器
             RegisterAdaptor(appdomain);
             

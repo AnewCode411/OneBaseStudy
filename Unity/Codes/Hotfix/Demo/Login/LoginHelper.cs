@@ -32,9 +32,9 @@ namespace ET
                 G2C_LoginGate g2CLoginGate = (G2C_LoginGate)await gateSession.Call(
                     new C2G_LoginGate() { Key = r2CLogin.Key, GateId = r2CLogin.GateId});
 
-                Log.Debug("登陆gate成功!");
+                Log.Vital("登陆gate成功!");
 
-                Game.EventSystem.Publish(new EventType.LoginFinish() {ZoneScene = zoneScene});
+                Game.EventSystem.PublishAsync(new EventType.LoginFinish() {ZoneScene = zoneScene});
             }
             catch (Exception e)
             {
