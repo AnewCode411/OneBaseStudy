@@ -416,7 +416,7 @@ namespace ET
                 return;
             }
 
-            string p = Path.Combine(PathHelper.AppHotfixResPath, assetBundleName);
+            string p = Path.Combine(AssetsBundleHelper.patchDataPath, assetBundleName);
             AssetBundle assetBundle = null;
             if (File.Exists(p))
             {
@@ -424,7 +424,7 @@ namespace ET
             }
             else
             {
-                p = Path.Combine(PathHelper.AppResPath, assetBundleName);
+                p = Path.Combine(AssetsBundleHelper.abDataPath, assetBundleName);
                 assetBundle = AssetBundle.LoadFromFile(p);
             }
 
@@ -545,10 +545,10 @@ namespace ET
                     return abInfo;
                 }
             }
-            p = Path.Combine(PathHelper.AppHotfixResPath, assetBundleName);
+            p = Path.Combine(AssetsBundleHelper.patchDataPath, assetBundleName);
             if (!File.Exists(p))
             {
-                p = Path.Combine(PathHelper.AppResPath, assetBundleName);
+                p = Path.Combine(AssetsBundleHelper.abDataPath, assetBundleName);
             }
             Log.Debug("Async load bundle BundleName : " + p);
 

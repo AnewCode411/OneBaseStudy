@@ -176,6 +176,15 @@ namespace ET
             string s = string.Format(message, args) + '\n' + st;
             ILog.Error($"[ERROR]\t{s}");
         }
+
+        public static void Vital(string message, params object[] args)
+        {
+            if (!CheckLogLevel(VitalLevel))
+            {
+                return;
+            }
+            ILog.Vital($"[Vital]\t{string.Format(message, args)}");
+        }
         
         public static void Console(string message)
         {

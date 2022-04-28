@@ -64,6 +64,14 @@ namespace ET
 
 			Options.Instance = new Options();
 
+			AssetsBundleHelper.Init();
+			Log.Vital("assetBundlePlatform: {0}", AssetsBundleHelper.assetBundlePlatform);
+			Log.Vital("protocal: {0}", AssetsBundleHelper.protocal);
+			Log.Vital("abDataPath: {0}", AssetsBundleHelper.abDataPath);
+			Log.Vital("patchDataPath: {0}", AssetsBundleHelper.patchDataPath);
+			Log.Vital("extraDataPath: {0}", AssetsBundleHelper.extraDataPath);
+			Log.Vital("userDataPath: {0}", AssetsBundleHelper.userDataPath);
+
 			CodeLoader.Instance.CodeMode = this.CodeMode;
 			Options.Instance.Develop = (int)this.DevelopMode;	//设置 模式
 			Options.Instance.LogLevel = (int)this.LogLevelMode;	//设置日志等级

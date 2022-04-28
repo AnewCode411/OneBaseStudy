@@ -39,7 +39,7 @@ namespace ET
                 return objects;
             }
 
-            string p = Path.Combine(PathHelper.AppHotfixResPath, assetBundleName);
+            string p = Path.Combine(AssetsBundleHelper.patchDataPath, assetBundleName);
             UnityEngine.AssetBundle assetBundle = null;
             if (File.Exists(p))
             {
@@ -47,7 +47,7 @@ namespace ET
             }
             else
             {
-                p = Path.Combine(PathHelper.AppResPath, assetBundleName);
+                p = Path.Combine(AssetsBundleHelper.abDataPath, assetBundleName);
                 assetBundle = UnityEngine.AssetBundle.LoadFromFile(p);
             }
 
