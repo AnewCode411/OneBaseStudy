@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using ET;
 
 namespace UnityEngine.UI
 {
@@ -46,7 +45,7 @@ namespace UnityEngine.UI
             GridLayoutGroup layout = content.GetComponent<GridLayoutGroup>();
             if (layout != null && layout.constraint != GridLayoutGroup.Constraint.FixedRowCount)
             {
-                Log.Error("[LoopHorizontalScrollRect] unsupported GridLayoutGroup constraint");
+                Debug.LogError("[LoopHorizontalScrollRect] unsupported GridLayoutGroup constraint");
             }
         }
 

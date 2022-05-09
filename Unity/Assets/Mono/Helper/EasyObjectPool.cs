@@ -34,7 +34,7 @@ namespace ET
             if (poolObjectPrefab == null)
             {
 #if UNITY_EDITOR
-                Log.Error("[ObjPoolManager] null pool object prefab !");
+                Debug.LogError("[ObjPoolManager] null pool object prefab !");
 #endif
                 return;
             }
@@ -100,7 +100,7 @@ namespace ET
                     increaseSize = availableObjStack.Count + Mathf.Max(objectsInUse, 0);
                 }
 #if UNITY_EDITOR
-                Log.Info(string.Format("Growing pool {0}: {1} populated", poolName, increaseSize));
+                Debug.Log(string.Format("Growing pool {0}: {1} populated", poolName, increaseSize));
 #endif
                 if (increaseSize > 0)
                 {
@@ -138,7 +138,7 @@ namespace ET
                 if (po.isPooled)
                 {
 #if UNITY_EDITOR
-                    Log.Warning(po.gameObject.name + " is already in pool. Why are you trying to return it again? Check usage.");
+                    Debug.LogWarning(po.gameObject.name + " is already in pool. Why are you trying to return it again? Check usage.");
 #endif
                 }
                 else
@@ -148,7 +148,7 @@ namespace ET
             }
             else
             {
-                Log.Error(string.Format("Trying to add object to incorrect pool {0} {1}", po.poolName, poolName));
+                Debug.LogError(string.Format("Trying to add object to incorrect pool {0} {1}", po.poolName, poolName));
             }
         }
     }

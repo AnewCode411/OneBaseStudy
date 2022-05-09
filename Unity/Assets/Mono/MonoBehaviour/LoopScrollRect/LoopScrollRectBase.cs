@@ -4,7 +4,6 @@ using UnityEngine.EventSystems;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using ET;
 
 namespace UnityEngine.UI
 {
@@ -105,7 +104,7 @@ namespace UnityEngine.UI
                     {
                         if (layout2.constraint == GridLayoutGroup.Constraint.Flexible)
                         {
-                            Log.Warning("[LoopScrollRect] Flexible not supported yet");
+                            Debug.LogWarning("[LoopScrollRect] Flexible not supported yet");
                         }
                         m_ContentConstraintCount = layout2.constraintCount;
                     }

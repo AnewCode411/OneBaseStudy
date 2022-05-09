@@ -26,7 +26,7 @@ namespace UnityEngine.UI
             }
             catch (Exception e)
             {
-                Log.Error(e);
+                Debug.LogError(e);
                 return null;
             }
         }
@@ -46,7 +46,7 @@ namespace UnityEngine.UI
             }
             catch (Exception e)
             {
-                Log.Error(e);
+                Debug.LogError(e);
             }
         }
     }
