@@ -21,7 +21,7 @@ namespace ET.Analyzer
         
         public sealed override async Task RegisterCodeFixesAsync(CodeFixContext context)
         {
-            SyntaxNode? root = await context.Document.GetSyntaxRootAsync(context.CancellationToken).ConfigureAwait(false);
+            SyntaxNode? root = await context.Document.GetSyntaxRootAsync(context.CancellationToken);
             
             Diagnostic diagnostic = context.Diagnostics.First();
 
@@ -62,7 +62,7 @@ namespace ET.Analyzer
             // 构造替换AttributeList的 ClassDeclaration语法节点
             ClassDeclarationSyntax? newClassDeclaration =  classDeclaration?.WithAttributeLists(attributes.Value).WithAdditionalAnnotations(Formatter.Annotation);
 
-            SyntaxNode? root = await document.GetSyntaxRootAsync(cancellationToken).ConfigureAwait(false);
+            SyntaxNode? root = await document.GetSyntaxRootAsync(cancellationToken);
 
             if (root==null ||classDeclaration==null || newClassDeclaration==null )
             {
